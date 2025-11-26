@@ -28,7 +28,7 @@ def signup(request):
 
 @login_required
 def dashboard_cliente(request):
-    problemas = Problema.objects.filter(cliente=request.user).order_by('-data_criacao')
+    problemas = Problema.objects.filter(cliente=request.user).select_related('oficina').order_by('-data_criacao')
     if request.method == 'POST':
         form = ProblemaForm(request.POST, request.FILES)
         if form.is_valid():
