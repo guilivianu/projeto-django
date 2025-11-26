@@ -43,3 +43,13 @@ Rodar servidor de debug:
 ```bash
 python manage.py runserver
 ```
+
+## População Automática do Banco de Dados (Seed)
+
+Para facilitar os testes, o projeto conta com um script que cria oficinas, clientes e problemas aleatórios automaticamente.
+
+Execute o comando:
+
+```bash
+python manage.py popular_banco
+```

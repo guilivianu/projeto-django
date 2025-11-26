@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from .forms import ClienteSignUpForm, ProblemaForm, OficinaPerfilForm
+from .forms import ClienteSignUpForm, CustomUserCreationForm, ProblemaForm, OficinaPerfilForm
 from .models import Problema, User, PerfilOficina
 
 def home(request):
@@ -12,16 +12,19 @@ def home(request):
             return redirect('dashboard_oficina')
     return render(request, 'core/home.html')
 
-def signup_cliente(request):
+def signup(request):
     if request.method == 'POST':
-        form = ClienteSignUpForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('dashboard_cliente')
+            if user.is_cliente:
+                return redirect('dashboard_cliente')
+            elif user.is_oficina:
+                return redirect('dashboard_oficina')
     else:
-        form = ClienteSignUpForm()
-    return render(request, 'registration/signup.html', {'form': form, 'tipo': 'Cliente'})
+        form = CustomUserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 @login_required
 def dashboard_cliente(request):

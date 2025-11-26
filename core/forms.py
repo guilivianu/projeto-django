@@ -13,6 +13,28 @@ class ClienteSignUpForm(UserCreationForm):
             user.save()
         return user
 
+class CustomUserCreationForm(UserCreationForm):
+    TIPO_CHOICES = (
+        ('CLIENTE', 'Cliente'),
+        ('OFICINA', 'Oficina'),
+    )
+    tipo_usuario = forms.ChoiceField(choices=TIPO_CHOICES, widget=forms.RadioSelect, label="Eu sou:")
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = UserCreationForm.Meta.fields + ('tipo_usuario',)
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        tipo = self.cleaned_data.get('tipo_usuario')
+        if tipo == 'CLIENTE':
+            user.is_cliente = True
+        elif tipo == 'OFICINA':
+            user.is_oficina = True
+        if commit:
+            user.save()
+        return user
+
 class ProblemaForm(forms.ModelForm):
     class Meta:
         model = Problema
