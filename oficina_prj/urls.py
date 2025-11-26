@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from core import views
 from django.contrib.auth import views as auth_views
 
@@ -15,4 +17,4 @@ urlpatterns = [
     
     path('servico/<int:pk>/pegar/', views.pegar_servico, name='pegar_servico'),
     path('servico/<int:pk>/concluir/', views.concluir_servico, name='concluir_servico'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -38,11 +38,12 @@ class CustomUserCreationForm(UserCreationForm):
 class ProblemaForm(forms.ModelForm):
     class Meta:
         model = Problema
-        fields = ['titulo', 'modelo_carro', 'descricao']
+        fields = ['titulo', 'modelo_carro', 'descricao', 'imagem']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'modelo_carro': forms.TextInput(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'imagem': forms.FileInput(attrs={'class': 'form-control'}),
         }
 
 class OficinaPerfilForm(forms.ModelForm):

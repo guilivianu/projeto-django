@@ -30,7 +30,7 @@ def signup(request):
 def dashboard_cliente(request):
     problemas = Problema.objects.filter(cliente=request.user).order_by('-data_criacao')
     if request.method == 'POST':
-        form = ProblemaForm(request.POST)
+        form = ProblemaForm(request.POST, request.FILES)
         if form.is_valid():
             problema = form.save(commit=False)
             problema.cliente = request.user

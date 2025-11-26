@@ -32,6 +32,7 @@ class Problema(models.Model):
     titulo = models.CharField(max_length=200)
     modelo_carro = models.CharField(max_length=100)
     descricao = models.TextField()
+    imagem = models.ImageField(upload_to='problemas/', null=True, blank=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ABERTO')
 
