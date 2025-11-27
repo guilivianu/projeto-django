@@ -1,55 +1,85 @@
-# ECAA09 Parte2
+# AutoFix - Sistema de Gestão de Oficinas (ECAA09 Parte 2)
 
-Segunda parte do projeto Django para a disciplina ECAA09
+Segunda parte do projeto Django para a disciplina ECAA09. O sistema conecta clientes com problemas mecânicos a oficinas especializadas.
 
-# Proposta da Atividade (deixar mais claro a avaliação)
+## 📋 Funcionalidades Implementadas
 
-- Criar tela de cadastro/registro personalizada indicando se é cliente ou oficina
-- No dashboard de cliente cadastrar de problema com upload de imagem
-- No dashboard de cliente listar os cadastros de problemas e se tem oficina interessada
-- No dashboard de oficina selecionar um problema cadastrado pelo cliente
-- No dashboard de oficina listar problemas selecionados
+- [x] **Cadastro Personalizado**: Registro de usuários com distinção entre "Cliente" e "Oficina".
+- [x] **Cadastro de Problemas**: Clientes podem registrar problemas com descrição e **upload de imagem**.
+- [x] **Dashboard do Cliente**:
+  - Listagem de problemas cadastrados.
+  - Visualização do status e da oficina interessada.
+- [x] **Dashboard da Oficina**:
+  - Visualização de problemas em aberto (com fotos).
+  - Seleção de problemas para atendimento.
+  - Gestão de serviços em andamento.
 
-## Resultados do Gemini 3
+## 🚀 Como Rodar o Projeto
 
-[Chat de Geração do Projeto no Gemini 3 Pro](https://gemini.google.com/share/689d84d7820e)
+### Pré-requisitos
 
-## Primeiro Uso
+- Python 3.x
+- Virtualenv (recomendado)
 
-Criar ambiente virtual e ativá-lo:
+### Instalação
 
-```bash
-python -m venv .venv
+1. **Clone o repositório** (se aplicável) ou baixe os arquivos.
 
-# Ativar no Windows
-.venv\Scripts\activate
+2. **Crie e ative o ambiente virtual**:
 
-pip install -r requirements.txt
-```
+   ```bash
+   python -m venv .venv
 
-Criar banco de dados com modelos:
+   # Windows
+   .venv\Scripts\activate
 
-```bash
-# Criar tabelas do core
-python manage.py makemigrations core
-# Criar tabelas de atenticação do django
-python manage.py migrate
-# criar super usuário
-python manage.py createsuperuser
-```
+   # Linux/Mac
+   source .venv/bin/activate
+   ```
 
-Rodar servidor de debug:
+3. **Instale as dependências**:
 
-```bash
-python manage.py runserver
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## População Automática do Banco de Dados (Seed)
+   _Nota: Isso instalará o Django, Gunicorn e Pillow (necessário para imagens)._
 
-Para facilitar os testes, o projeto conta com um script que cria oficinas, clientes e problemas aleatórios automaticamente.
+4. **Configure o Banco de Dados**:
 
-Execute o comando:
+   ```bash
+   # Criar migrações do app core
+   python manage.py makemigrations core
 
-```bash
-python manage.py popular_banco
-```
+   # Aplicar migrações
+   python manage.py migrate
+   ```
+
+5. **Crie um Superusuário**:
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+6. **(Opcional) Popule o Banco de Dados**:
+
+   O projeto conta com um script para criar dados fictícios de teste.
+
+   ```bash
+   python manage.py popular_banco
+   ```
+
+7. **Inicie o Servidor**:
+
+   ```bash
+   python manage.py runserver
+   ```
+
+   Acesse em: `http://127.0.0.1:8000/`
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Django 5**: Framework web principal.
+- **Bootstrap 5**: Estilização das páginas.
+- **SQLite**: Banco de dados padrão.
+- **Pillow**: Manipulação de imagens.
