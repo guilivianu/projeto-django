@@ -1,6 +1,10 @@
 # AutoFix - Sistema de Gestão de Oficinas (ECAA09 Parte 2)
 
+[![Render Status](https://api.render.com/deploy/status?serviceId=srv-d4k6dbfgi27c73ci5050)](https://render.com)
+
 Segunda parte do projeto Django para a disciplina ECAA09. O sistema conecta clientes com problemas mecânicos a oficinas especializadas.
+
+**🔗 Demo Online:** [https://ecaa09-parte2-7uix.onrender.com](https://ecaa09-parte2-7uix.onrender.com)
 
 ## 📋 Funcionalidades Implementadas
 
